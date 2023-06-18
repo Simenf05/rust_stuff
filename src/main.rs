@@ -1,21 +1,32 @@
 
+use hyper::Client;
+use hyper::body::HttpBody as _;
+use tokio::io::{stdout, AsyncWriteExt as _};
 
 
-fn send(client: reqwest::blocking::Client) {
 
-    let res = client.post("http://localhost:8080")
-        .body("simen")
-        .send();
+
+
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+
     
-    println!("{res:?}")
+    let client = Client::new();
+
+    let uri = "http://127.0.0.1:8080".parse()?;
 
 
+    let mut resp = client.get(uri).await?;
+
+    
+
+    while let Some(chunk) = resp.body_mut().data().await {
+        stdout().write_all(&chunk?).await?
+    }
+
+
+
+    Ok(())
 }
 
-fn main() {
-
-    let client = reqwest::blocking::Client::new();
-    
-    send(client);
-
-}
