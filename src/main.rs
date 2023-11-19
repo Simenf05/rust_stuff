@@ -1,10 +1,9 @@
 
-mod primes;
-
+mod rand_nr;
 
 fn main() {
 
-    primes::run(1000000)
+    rand_nr::run();
 
 }
 
