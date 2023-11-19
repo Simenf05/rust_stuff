@@ -1,4 +1,4 @@
-#!/bin/sh
+
 mod rand_nr;
 
 fn main() {
