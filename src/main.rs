@@ -1,9 +1,8 @@
-
-mod rand_nr;
+mod notes;
 
 fn main() {
 
-    rand_nr::run();
+    notes::run();
 
 }
 
