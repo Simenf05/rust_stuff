@@ -1,10 +1,5 @@
-mod notes;
+mod c;
 
 fn main() {
-
-    notes::run();
-
+    c::run();
 }
-
-
-
